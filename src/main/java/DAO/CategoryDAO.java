@@ -15,7 +15,8 @@ public class CategoryDAO implements IRepositoryBase<Category> {
     private Category mapRowToCategory(ResultSet rs) throws SQLException {
         return new Category(
                 rs.getLong("id"),
-                rs.getString("name")
+                rs.getString("name"),
+                rs.getString("description")
         );
     }
     @Override
@@ -32,14 +33,14 @@ public class CategoryDAO implements IRepositoryBase<Category> {
 
     @Override
     public Long create(Category category) {
-        String sql = "INSERT INTO category (name) VALUES (?)";
+        String sql = "INSERT INTO category (name, description) VALUES (?, ?)";
         return genericDAL.insert(sql, category.getName());
     }
 
     @Override
     public boolean update(Category category) {
-        String sql = "UPDATE category SET name = ? WHERE id = ?";
-        return genericDAL.update(sql, category.getName(), category.getId());
+        String sql = "UPDATE category SET name = ? description = ? WHERE id = ?";
+        return genericDAL.update(sql, category.getName(),category.getDescription(), category.getId());
     }
 
     @Override

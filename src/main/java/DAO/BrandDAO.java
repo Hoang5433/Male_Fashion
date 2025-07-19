@@ -16,8 +16,7 @@ public class BrandDAO implements IRepositoryBase<Brand> {
         return new Brand(
                 rs.getLong("id"),
                 rs.getString("name"),
-                rs.getString("description"),
-                rs.getString("image_url")
+                rs.getString("description")
         );
     }
 
@@ -41,13 +40,13 @@ public class BrandDAO implements IRepositoryBase<Brand> {
     @Override
     public Long create(Brand brand) {
         String sql = "INSERT INTO brand (name, description, image_url) VALUES (?, ?, ?)";
-        return genericDAL.insert(sql, brand.getName(), brand.getDescription(), brand.getImageUrl());
+        return genericDAL.insert(sql, brand.getName(), brand.getDescription());
     }
 
     @Override
     public boolean update(Brand brand) {
         String sql = "UPDATE brand SET name = ?, description = ?, image_url = ? WHERE id = ?";
-        return genericDAL.update(sql, brand.getName(), brand.getDescription(), brand.getImageUrl(), brand.getId());
+        return genericDAL.update(sql, brand.getName(), brand.getDescription(), brand.getId());
     }
 
     @Override

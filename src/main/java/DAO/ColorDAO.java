@@ -17,8 +17,7 @@ public class ColorDAO implements IRepositoryBase<Color> {
         return new Color(
                 rs.getLong("id"),
                 rs.getString("colorName"),
-                rs.getString("colorHex"),
-                rs.getString("imageUrl")
+                rs.getString("colorHex")
         );
     }
     @Override
@@ -35,14 +34,14 @@ public class ColorDAO implements IRepositoryBase<Color> {
 
     @Override
     public Long create(Color color) {
-        String sql = "INSERT INTO color (colorName, colorHex, imageUrl) VALUES (?, ?, ?)";
-        return genericDAL.insert(sql, color.getColorName(), color.getColorHex(), color.getImageUrl());
+        String sql = "INSERT INTO color (colorName, colorHex) VALUES (?, ?, ?)";
+        return genericDAL.insert(sql, color.getColorName(), color.getColorHex());
     }
 
     @Override
     public boolean update(Color color) {
-        String sql = "UPDATE color SET colorName = ?, colorHex = ?, imageUrl = ? WHERE id = ?";
-        return genericDAL.update(sql, color.getColorName(), color.getColorHex(), color.getImageUrl(), color.getId());
+        String sql = "UPDATE color SET colorName = ?, colorHex = ? WHERE id = ?";
+        return genericDAL.update(sql, color.getColorName(), color.getColorHex(), color.getId());
     }
 
     @Override

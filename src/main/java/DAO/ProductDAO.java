@@ -36,15 +36,14 @@ public class ProductDAO implements IRepositoryBase<Product> {
         return product;
     }
     private List<Color> getColorsByProductId(Long productId) {
-        String sql = "SELECT c.id, c.colorName, c.colorHex, c.imageUrl " +
+        String sql = "SELECT c.id, c.colorName, c.colorHex " +
                 "FROM ProductColor pc " +
                 "INNER JOIN Color c ON pc.color_id = c.id " +
                 "WHERE pc.product_id = ?";
         return genericDAL.queryForList(sql, rs -> new Color(
                 rs.getLong("id"),
                 rs.getString("colorName"),
-                rs.getString("colorHex"),
-                rs.getString("imageUrl")
+                rs.getString("colorHex")
         ), productId);
     }
     private List<Tag> getTagsByProductId(Long productId) {

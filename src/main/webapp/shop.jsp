@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lenovo
-  Date: 6/26/2025
-  Time: 9:44 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -177,15 +171,9 @@
                       <div class="card-body">
                         <div class="shop__sidebar__categories">
                           <ul class="nice-scroll">
-                            <li><a href="#">Men (20)</a></li>
-                            <li><a href="#">Women (20)</a></li>
-                            <li><a href="#">Bags (20)</a></li>
-                            <li><a href="#">Clothing (20)</a></li>
-                            <li><a href="#">Shoes (20)</a></li>
-                            <li><a href="#">Accessories (20)</a></li>
-                            <li><a href="#">Kids (20)</a></li>
-                            <li><a href="#">Kids (20)</a></li>
-                            <li><a href="#">Kids (20)</a></li>
+                            <c:forEach var="category" items="${categoryList}">
+                              <li><a href="#">${category.name} (36)</a></li>
+                            </c:forEach>
                           </ul>
                         </div>
                       </div>
@@ -199,10 +187,9 @@
                       <div class="card-body">
                         <div class="shop__sidebar__brand">
                           <ul>
-                            <li><a href="#">Louis Vuitton</a></li>
-                            <li><a href="#">Chanel</a></li>
-                            <li><a href="#">Hermes</a></li>
-                            <li><a href="#">Gucci</a></li>
+                            <c:forEach var="brand" items="${brandList}">
+                              <li><a href="#">${brand.name}</a></li>
+                            </c:forEach>
                           </ul>
                         </div>
                       </div>
@@ -234,30 +221,12 @@
                     <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
                       <div class="card-body">
                         <div class="shop__sidebar__size">
-                          <label for="xs">xs
-                            <input type="radio" id="xs">
-                          </label>
-                          <label for="sm">s
-                            <input type="radio" id="sm">
-                          </label>
-                          <label for="md">m
-                            <input type="radio" id="md">
-                          </label>
-                          <label for="xl">xl
-                            <input type="radio" id="xl">
-                          </label>
-                          <label for="2xl">2xl
-                            <input type="radio" id="2xl">
-                          </label>
-                          <label for="xxl">xxl
-                            <input type="radio" id="xxl">
-                          </label>
-                          <label for="3xl">3xl
-                            <input type="radio" id="3xl">
-                          </label>
-                          <label for="4xl">4xl
-                            <input type="radio" id="4xl">
-                          </label>
+                          <c:forEach var="size" items="${sizeList}">
+                            <label for="${size.sizeName}">
+                                ${size.sizeName}
+                              <input type="radio" id="${size.sizeName}">
+                            </label>
+                          </c:forEach>
                         </div>
                       </div>
                     </div>
@@ -269,33 +238,11 @@
                     <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
                       <div class="card-body">
                         <div class="shop__sidebar__color">
-                          <label class="c-1" for="sp-1">
-                            <input type="radio" id="sp-1">
-                          </label>
-                          <label class="c-2" for="sp-2">
-                            <input type="radio" id="sp-2">
-                          </label>
-                          <label class="c-3" for="sp-3">
-                            <input type="radio" id="sp-3">
-                          </label>
-                          <label class="c-4" for="sp-4">
-                            <input type="radio" id="sp-4">
-                          </label>
-                          <label class="c-5" for="sp-5">
-                            <input type="radio" id="sp-5">
-                          </label>
-                          <label class="c-6" for="sp-6">
-                            <input type="radio" id="sp-6">
-                          </label>
-                          <label class="c-7" for="sp-7">
-                            <input type="radio" id="sp-7">
-                          </label>
-                          <label class="c-8" for="sp-8">
-                            <input type="radio" id="sp-8">
-                          </label>
-                          <label class="c-9" for="sp-9">
-                            <input type="radio" id="sp-9">
-                          </label>
+                          <c:forEach var="color" items="${colorList}">
+                            <label class="c-${color.id}" for="sp-${color.id}">
+                              <input type="radio" id="sp-${color.id}">
+                            </label>
+                          </c:forEach>
                         </div>
                       </div>
                     </div>
@@ -307,13 +254,9 @@
                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                       <div class="card-body">
                         <div class="shop__sidebar__tags">
-                          <a href="#">Product</a>
-                          <a href="#">Bags</a>
-                          <a href="#">Shoes</a>
-                          <a href="#">Fashio</a>
-                          <a href="#">Clothing</a>
-                          <a href="#">Hats</a>
-                          <a href="#">Accessories</a>
+                          <c:forEach var="tag" items="${tagList}">
+                            <a href="#">${tag.tagName}</a>
+                          </c:forEach>
                         </div>
                       </div>
                     </div>
@@ -343,41 +286,43 @@
               </div>
             </div>
             <div class="row">
+              <c:forEach var="product" items="${productList}">
               <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="product__item">
-                  <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
+                  <div class="product__item__pic set-bg" data-setbg="${product.imageUrl}">
                     <ul class="product__hover">
                       <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
                       <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
                       </li>
-                      <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                      <li><a href="#"><img src="img/icon/search.png" a`lt=""></a></li>
                     </ul>
                   </div>
                   <div class="product__item__text">
-                    <h6>Piqué Biker Jacket</h6>
+                    <h6>${product.name}</h6>
                     <a href="#" class="add-cart">+ Add To Cart</a>
                     <div class="rating">
-                      <i class="fa fa-star-o"></i>
-                      <i class="fa fa-star-o"></i>
-                      <i class="fa fa-star-o"></i>
-                      <i class="fa fa-star-o"></i>
-                      <i class="fa fa-star-o"></i>
+                      <c:forEach begin="1" end="5" var="i">
+                        <c:choose>
+                          <c:when test="${i <= product.rating}">
+                            <i class="fa fa-star" style="color: #ffc107;"></i>
+                          </c:when>
+                          <c:otherwise>
+                            <i class="fa fa-star-o"></i>
+                          </c:otherwise>
+                        </c:choose>
+                      </c:forEach>
                     </div>
-                    <h5>$67.24</h5>
+                    <h5>$${product.price}</h5>
                     <div class="product__color__select">
-                      <label for="pc-4">
-                        <input type="radio" id="pc-4">
-                      </label>
-                      <label class="active black" for="pc-5">
-                        <input type="radio" id="pc-5">
-                      </label>
-                      <label class="grey" for="pc-6">
-                        <input type="radio" id="pc-6">
-                      </label>
+                      <c:forEach var="color" items="${product.colors}" varStatus="loop">
+                        <label class="c-${color.id} ${loop.first ? 'active' : ''}" for="pc-${color.id}">
+                            <input type="radio" id="pc-${color.id}" ${loop.first ? 'checked' : ''}>
+                      </c:forEach>
                     </div>
                   </div>
                 </div>
               </div>
+              </c:forEach>
               <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="product__item sale">
                   <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">

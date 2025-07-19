@@ -8,6 +8,5 @@ public class Color {
     private Long id;
     private String colorName;
     private String colorHex;
-    private String imageUrl;
 }
 

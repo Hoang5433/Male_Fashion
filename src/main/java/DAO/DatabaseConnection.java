@@ -16,7 +16,7 @@ public class DatabaseConnection {
             c = DriverManager.getConnection(url, username, password);
 
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Không tìm th driver MySQL", e);
+            throw new RuntimeException("Không tìm thấy driver MySQL", e);
         }
         return c;
     }
