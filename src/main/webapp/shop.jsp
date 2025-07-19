@@ -323,8 +323,9 @@
                     <h5>$${product.price}</h5>
                     <div class="product__color__select">
                       <c:forEach var="color" items="${product.colors}" varStatus="loop">
-                        <label class="c-${color.id} ${loop.first ? 'active' : ''}" for="pc-${color.id}">
-                            <input type="radio" id="pc-${color.id}" ${loop.first ? 'checked' : ''}>
+                        <label class="c-${color.id} ${loop.first ? 'active' : ''}" for="pc-${color.id}" style="background: ${color.colorHex}">
+                            <input type="radio" id="pc-${color.id}" ${loop.first ? 'checked' : ''}/>
+                        </label>
                       </c:forEach>
                     </div>
                   </div>

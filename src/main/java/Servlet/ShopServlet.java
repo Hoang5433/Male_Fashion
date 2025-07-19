@@ -42,4 +42,5 @@ public class ShopServlet extends HttpServlet {
 
     public void destroy() {
     }
+
 }

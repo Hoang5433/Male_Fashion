@@ -12,7 +12,7 @@ public class DatabaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mySQL://localhost:3306/male_fashion";
             String username = "root";
-            String password = "";
+            String password = "root";
             c = DriverManager.getConnection(url, username, password);
 
         } catch (ClassNotFoundException e) {
