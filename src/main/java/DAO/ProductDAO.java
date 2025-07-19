@@ -18,7 +18,7 @@ public class ProductDAO implements IRepositoryBase<Product> {
                 rs.getLong("id"),
                 rs.getString("name"),
                 rs.getString("description"),
-                rs.getLong("price"),
+                rs.getFloat("price"),
                 rs.getInt("stockQuantity"),
                 rs.getString("imageUrl"),
                 rs.getInt("rating"),

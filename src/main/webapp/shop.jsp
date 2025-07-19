@@ -172,7 +172,15 @@
                         <div class="shop__sidebar__categories">
                           <ul class="nice-scroll">
                             <c:forEach var="category" items="${categoryList}">
-                              <li><a href="#">${category.name} (36)</a></li>
+                              <li><a href="#">${category.name} (
+                                <c:set var="count" value="0" />
+                                <c:forEach var="product" items="${productList}">
+                                   <c:if test="${product.categoryId == category.id}">
+                                      <c:set var="count" value="${count + 1}" />
+                                   </c:if>
+                                </c:forEach>
+                                ${count}
+                              )</a></li>
                             </c:forEach>
                           </ul>
                         </div>

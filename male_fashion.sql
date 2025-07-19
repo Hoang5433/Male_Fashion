@@ -10,7 +10,7 @@ CREATE TABLE Category (
                           updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Tạo bảng Brand
+-- Tạo bảng Branda
 CREATE TABLE Brand (
                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
                        name VARCHAR(255) NOT NULL,
